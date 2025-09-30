@@ -1,0 +1,13 @@
+version: "3"
+services:
+  server_app:
+    build: ./ServerApp-image1
+    image: server_app:latest
+    ports:
+      - "5000:5000"
+
+  client_app:
+    build: ./ClientApp-image2
+    image: client_app:latest
+    depends_on:
+      - server_app
