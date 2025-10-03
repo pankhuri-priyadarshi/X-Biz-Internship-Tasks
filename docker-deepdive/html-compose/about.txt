@@ -1,0 +1,32 @@
+-------------HTML-COMPOSE-----------
+
+1.Created a Dockerfile based on Ubuntu 22.04 to host a static HTML page using Nginx.
+   Installed Nginx with apt-get.
+   Cleaned up apt cache to reduce image size.
+   Ensured /var/www/html directory exists.
+   Copied index.html into container’s Nginx webroot.
+   Exposed port 80 for HTTP access.
+   Added CMD to run nginx in foreground.
+
+2.Created index.html file with a styled static web page.
+   Used HTML5 doctype, head, body, and CSS for styling.
+   Page displays a title, message, and footer text.
+
+3.Wrote docker-compose.yml to run the container.
+   Configured build context and Dockerfile.
+   Tagged custom image nginx-ubuntu-compose:latest.
+   Mapped port 8080:80 for browser access.
+   Added restart policy unless-stopped.
+   Mounted project folder into container at /workspace (read-only).
+
+4.Tested container with Docker Compose
+  Used docker-compose up --build to build and run.
+  Verified web page served at http://localhost:8080.
+  Debugged issue with nginx binary path and fixed CMD to use /usr/sbin/nginx.
+
+5.Learned and Documented Key Docker Concepts
+  Difference between CMD and ENTRYPOINT.
+  Use of EXPOSE and port mapping in Compose.
+  Best practices for cleaning apt cache and handling logs in Dockerfile.
+
+ 
