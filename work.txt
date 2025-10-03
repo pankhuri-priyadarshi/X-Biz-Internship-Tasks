@@ -1,0 +1,44 @@
+----- Essential Docker Commands -----
+
+docker --version → check if Docker installed.
+docker ps → show running containers.
+docker ps -a → show all containers (stopped also).
+docker images → list images.
+docker run hello-world → test Docker is working.
+docker stop <container_id> → stop container.
+docker rm <container_id> → remove container.
+docker rmi <image_id> → remove image.
+
+----- Docker Build & Run Commands -----
+
+docker build -t server_app ./ServerApp-image1 → build image for ServerApp with tag 'server_app'.
+docker build -t client_app ./ClientApp-image2 → build image for ClientApp with tag 'client_app'.
+docker network create mynetwork → create a custom network so containers can talk to each other.
+docker run -d --name server_app --network mynetwork -p 5000:5000 server_app → run server container in background, attach to 'mynetwork', expose port 5000.
+docker run --rm --name client_app --network mynetwork client_app → run client container, attach to 'mynetwork', auto-remove after exit.
+
+
+------------ What I Did Today --------
+
+1. Learned the difference between Docker images and containers.
+   → Image = template, Container = running instance of an image.
+
+2. Built two Docker images:
+   - server_app → Flask server application (API).
+   - client_app → Python requests application (calls Flask API).
+
+3. Created a custom Docker network (mynetwork) 
+   → So that multiple containers can communicate with each other by service names.
+
+4. Ran the ServerApp container with port mapping (5000:5000).
+   → Allowed me to access the API at http://server_app:5000/data.
+
+5. Ran the ClientApp container in the same network.
+   → Client successfully connected to ServerApp and fetched response.
+
+6. Understood why "docker-compose up" works automatically 
+   → Because it creates network + manages services internally.
+   → When using "docker run" manually, I created custom network myself.
+
+7. Noted down essential docker commands 
+   → build, run, stop, remove containers/images, and networking.
