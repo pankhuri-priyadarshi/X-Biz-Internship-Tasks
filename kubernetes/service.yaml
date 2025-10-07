@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: nginx-service
+spec:
+  selector:         # It tells which Pods this Service should send traffic to.
+    app: nginx
+  ports:       # defining network port in service
+  - port: 80   # Service port
+    targetPort: 80  # container port inside pod
+  type: NodePort
+
+
+# Our browser    → NodePort (31234)
+#                → Service (port 80)
+#                → Pod (targetPort 80)
