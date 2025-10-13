@@ -1,0 +1,13 @@
+-------- About this task-----
+
+1.Learned RabbitMQ basics and message queue concept.
+2.Understood producer–consumer (work queue) model.
+3.Created two Python apps using RabbitMQ:
+4.Folder Scanner (sender.py): Sends folder paths to queue.
+5.Folder Deleter (receiver.py): Receives and deletes folders/files.
+6.Implemented ACK system (basic_ack) for message reliability.
+7.Used basic_qos(prefetch_count=1) for fair task distribution.
+8.Learned difference between os.remove(), os.rmdir(), and shutil.rmtree().
+9.Fixed error for deleting files by adding file/folder checks.
+10.Created 3-layer dummy folder structure for testing (create_dummy_folders.py).
+11.Tested full workflow successfully via RabbitMQ Management UI.
