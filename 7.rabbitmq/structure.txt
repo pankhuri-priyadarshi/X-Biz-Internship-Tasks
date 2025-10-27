@@ -1,0 +1,84 @@
+-------------------- RabbitMQ — Summary ------------------------------
+
+1.RabbitMQ is an open-source message broker — it allows different applications or services to communicate asynchronously by sending messages.
+2.It works using Producer → Queue → Consumer model.
+    Producer: Sends messages
+    Queue: Stores messages temporarily
+    Consumer: Receives messages
+
+3.RabbitMQ supports multiple exchange types to decide how messages are routed to queues:
+    Direct Exchange: Sends message to a specific queue using a key.
+    Fanout Exchange: Broadcasts message to all queues.
+    Topic Exchange: Sends based on pattern-matching routing keys.
+    Headers Exchange: Uses message headers instead of routing keys.
+
+4.Broker’s job: Ensure messages are safely stored and delivered even if consumers are busy or offline.
+
+5.Protocols: Uses AMQP (Advanced Message Queuing Protocol).
+6.Use cases:
+    Background task processing
+    Communication between microservices
+    Queue-based systems (like order processing or notifications)
+
+7.Basic Commands / Concepts:
+        queue_declare() → Create a queue
+        basic_publish() → Send message
+        basic_consume() → Receive messages
+
+8.In short: RabbitMQ = “Post office between services” — ensures reliable message delivery.
+
+
+------------------ACK (Acknowledgement) — Summary ---------------------
+
+1.ACK (Acknowledgement) confirms that a message was successfully received and processed by the consumer.
+2.Without ACK, RabbitMQ might delete messages even if the consumer crashed before processing — leading to data loss.
+3.When ACK is enabled, RabbitMQ keeps the message until the consumer explicitly says,
+   "I got it, you can delete it!"
+
+4.Two types:
+      Manual ACK: Consumer manually sends acknowledgment (auto_ack=False).
+      Auto ACK: RabbitMQ automatically deletes message after sending (auto_ack=True).
+
+5.Example (Python):
+     channel.basic_consume(queue='test', on_message_callback=callback, auto_ack=False)
+     Manual ack requires ->Inside callback:
+               ch.basic_ack(delivery_tag=method.delivery_tag) -> ensures that ack is true i.e message is received while calling this function.
+     Auto ack not require this.
+
+6.If consumer fails before sending ACK → RabbitMQ requeues the message for another consumer.
+7.In short: ACK ensures message reliability & prevents data loss.
+
+
+----------------- Exclusive Queue — Summary ---------------------
+
+1. exclusive queue can be used by only one connection (one consumer) at a time.
+2.When that connection closes, the queue is automatically deleted.
+3.It’s created by setting:
+   channel.queue_declare(queue='myq', exclusive=True)
+
+4.Purpose: Used for temporary, private communication (like reply queues or single-client tasks).
+5.Features:
+    Auto-deletes when connection closes
+    Cannot be shared by multiple consumers
+    Good for one-time or short-lived tasks
+
+6.Example use case: RPC-style communication — where one consumer gets a response to its request.
+7.In short: Exclusive Queue = “Private queue for one connection — auto-deleted when done.”
+
+
+------------------------- Main Components of RabbitMQ ---------------------------
+
+1.Producer → Sends the message.
+🔹 Acts as the sender or data generator in the system.
+
+2.Exchange → Receives messages from the producer and routes them.
+🔹 Works like a post office, deciding where each message should go.
+
+3.Queue → Stores the messages temporarily.
+🔹 Acts like a mailbox where messages wait until a consumer picks them.
+
+4.Binding → Connects an exchange to a queue.
+🔹 Defines the routing rule (how messages are matched and delivered).
+
+5.Consumer → Receives and processes messages from the queue.
+🔹 Works as the receiver or worker that performs the required task.

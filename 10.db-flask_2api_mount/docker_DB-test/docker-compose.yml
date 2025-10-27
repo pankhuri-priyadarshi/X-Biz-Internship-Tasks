@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  api1:
+    build: ./api1
+    container_name: api1
+    ports:
+      - "5001:5001"
+    depends_on:
+      - api2
+      - mssql_db
+    environment:
+      - DB_SERVER=mssql_db
+      - DB_NAME=API_testing
+      - DB_USER=sa
+      - DB_PASSWORD=Pankhuri@2608X
+    networks:
+      - pankhuri
+
+  api2:
+    build: ./api2
+    container_name: api2
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mssql_db
+    environment:
+      - DB_SERVER=mssql_db
+      - DB_NAME=API_testing
+      - DB_USER=sa
+      - DB_PASSWORD=Pankhuri@2608X
+    networks:
+      - pankhuri
+
+  mssql_db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_db
+    environment:
+      SA_PASSWORD: "Pankhuri@2608X"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    networks:
+      - pankhuri
+
+networks:
+  pankhuri:
+    driver: bridge
+
+volumes:
+  mssql_data:

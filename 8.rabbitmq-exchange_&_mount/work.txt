@@ -1,0 +1,43 @@
+---------- RabbitMQ Exchange Types -------15/10/2025
+
+1️.Fanout Exchange
+
+   Sends message to all queues bound to it.
+   Doesn’t check routing key — broadcasts blindly.
+   Best for sending the same message to multiple consumers (like logging or notifications).
+   Example:
+   Exchange → logs_exchange
+   Queues → console_log, file_log
+   All queues receive every message sent. 
+
+2️. Direct Exchange
+ 
+   Routes messages based on exact routing key match.
+   Each queue is bound with a specific key (like info, error, warning).
+   Only queues with the same key receive that message.
+   Example:
+   Message with key = error → goes only to queue bound with error.
+   Use case: Sending messages to specific groups (e.g., different log levels).
+
+3️. Topic Exchange
+
+    Uses pattern-based routing keys (dot-separated words).
+    Supports wildcards for flexible matching:
+    * → matches exactly one word
+    # → matches zero or more words
+    Example:
+    Queue bound with user.* → receives user.login, user.logout
+    Queue bound with user.# → receives user.login, user.profile.update, user.logout.status
+    Use case: Event-driven systems (microservices) where message topics are structured like module.action.status.
+
+4️. Headers Exchange
+
+    Doesn’t use routing keys.
+    Routes messages based on headers (key-value pairs) inside message properties.
+    Each queue defines which headers it matches and how strict it should be:
+    'x-match': 'all' → must match all headers
+    'x-match': 'any' → must match at least one header
+    Example:
+    Message headers: {type: "pdf", format: "report"}
+    Queue bound with {x-match: "all", type: "pdf", format: "report"} → receives message.
+    Use case: When routing depends on message metadata (like file type, format, or user role).

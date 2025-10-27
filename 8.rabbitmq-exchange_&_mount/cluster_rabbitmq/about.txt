@@ -1,0 +1,66 @@
+---------RabbitMQ on Minikube – How to Run -----
+
+1.Start Minikube cluster
+    minikube start --driver=docker
+    minikube status
+
+2.Create RabbitMQ Deployment & Service
+    kubectl apply -f deployment.yaml
+    kubectl apply -f service.yaml
+
+3.Check running pods and services
+   kubectl get pods
+   kubectl get svc
+
+4.Get RabbitMQ host-port & Dashboard
+   minikube service rabbitmq ---> default rabbitmq (link) - for internally communication of consumer & producer
+                            ----> link - for rabbitmq Dashboard
+
+5.Update sender & receiver scripts   (127.0.0.1:50776)
+   Use: host = <default rabbitmq(link) host> like-127.0.0.1
+   Use: port = <default rabbitmq(link) port> like-50776
+
+6.Run sender and receiver locally in different terminal
+   python sender.py
+   python receiver.py
+
+7.Verify message flow
+   Sender prints: Message sent!
+   Receiver prints: Received: Hello User!
+
+----------- Files Summary ----------
+
+1.deployment.yaml
+
+    Creates RabbitMQ Deployment inside Minikube.
+    Runs rabbitmq:management image.
+    Exposes two container ports:
+    5672 → message broker (for sender/receiver)
+    15672 → management dashboard
+    Ensures RabbitMQ runs continuously inside the cluster.
+
+2️.service.yaml
+
+    Creates RabbitMQ Service to expose Deployment.
+    Type: NodePort (accessible outside the cluster).
+    Maps:
+    Port 5672 → AMQP communication (used in Python scripts).
+    Port 15672 → web dashboard access.
+    Provides a stable IP + NodePort for connection.
+
+3️.sender.py
+
+    Acts as the Producer (sends messages).
+    Connects to RabbitMQ using Minikube IP + NodePort.
+    Declares a queue named 'test_queue'.
+    Publishes a message → "Hello User!".
+    Prints confirmation → "Message sent!".
+
+4️.receiver.py
+ 
+    Acts as the Consumer (receives messages).
+    Connects to RabbitMQ using same IP + NodePort.
+    Listens on 'test_queue'.
+    Waits for incoming messages and prints received data.
+    Confirms message delivery → "Received: Hello User!".
+ 

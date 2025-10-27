@@ -1,0 +1,82 @@
+----------- Kubernetes Architecture Summary ------------
+
+1. Control Plane – The brain of Kubernetes, managing and controlling the cluster.
+ 
+  API Server: Main entry point for all commands and cluster communication.
+  etcd (KV Store): Stores entire cluster data and state in key-value format.
+  Controller Manager: Ensures actual state = desired state by monitoring resources.
+  Scheduler: Decides which worker node runs a new Pod.
+  CCM (Cloud Controller Manager): Connects cluster to cloud services (AWS, GCP, DO).
+
+2. Worker Node – Physical or virtual machine that runs containers (Pods).
+
+   kubelet: Communicates with API server and manages pod lifecycle.
+   kube-proxy: Manages networking and load balancing inside the cluster.
+   CRI (Container Runtime Interface): Runs containers using Docker or containerd.
+
+3. Pods – Smallest deployable units; run application containers.
+
+4. Deployment & Config: Define desired state (like “run 10 Nginx containers”) and Kubernetes ensures it automatically.
+
+5. Load Balancer: Used to distribute traffic across pods — via cloud (AWS ELB, GCP LB, DO LB) or manually on bare metal.
+  -> ---------Why LB (Load Balancer) is used in Kubernetes --------
+    
+    A Load Balancer (LB) distributes incoming traffic across multiple Pods or Nodes so that:
+       - No single pod gets overloaded.
+       - High availability is maintained.
+       - If one pod fails, traffic automatically goes to another.
+       - It ensures your service is accessible and balanced.
+
+                    
+-------------------- Kubernetes Commands -----------------------
+
+1.kubectl apply -f app.yaml            # Create or update resources
+2.kubectl delete -f app.yaml           # Delete defined resources
+3.kubectl get svc                      # List all services
+4.kubectl get nodes                    # Check all nodes in cluster
+5.kubectl describe node <node>         # Detailed info of a node
+6.kubectl get pods                     # List all pods
+7.kubectl exec -it <pod> -- bash       # Go inside running container
+8.kubectl delete pod <pod>             # Delete a pod
+
+
+--------------- Kubernetes Service Types Explained ------------------
+
+A Service in Kubernetes provides a stable IP + name to access your Pods, because Pods keep changing their IPs.
+Different service types decide how and from where you can access your app.
+
+1. ClusterIP (Default Type)
+
+   ➡️ Use when your app should be accessed only inside the cluster.
+   Access: Internal (from other pods or services only)
+   Auto assigns: a cluster-internal IP
+   Example: kubectl expose deployment backend --type=ClusterIP --port=8080
+   Use case: For internal communication like backend ↔ database
+   Analogy: A private number — only team members (inside cluster) can call you.
+
+2. NodePort
+
+   ➡️ Exposes app externally via each Node’s IP + static port (30000–32767).
+   Access: External (via <NodeIP>:<NodePort>)
+   Example: kubectl expose deployment nginx --type=NodePort --port=80
+   You can access: http://<node-ip>:<assigned-port>
+   Use case: For quick testing or access from outside cluster without cloud LB
+   Analogy: Like opening one door of your office building to the public.
+
+ 3. LoadBalancer
+
+   ➡️ Exposes app to the internet using a cloud-managed Load Balancer.
+   Access: Public external IP
+   Works with: Cloud platforms (AWS, GCP, Azure, DO)
+   Example: kubectl expose deployment nginx --type=LoadBalancer --port=80
+   Use case: When you want your app publicly available (production).
+   Analogy: Like hiring a receptionist who receives visitors and distributes them evenly to available staff (pods).
+📌 Internally, it first creates a NodePort + ClusterIP, then cloud LB forwards traffic to that.
+
+ 4. ExternalName
+
+   ➡️ Maps service name inside cluster to an external DNS name.
+   Access: Redirects internal requests to external services.
+   Example: kubectl create service externalname my-db \ --external-name=db.example.com
+   Use case: When your app inside cluster needs to connect to something outside (like an external DB or API).
+   Analogy: Like saving a contact name “MyDB” in phone that points to “db.example.com”.

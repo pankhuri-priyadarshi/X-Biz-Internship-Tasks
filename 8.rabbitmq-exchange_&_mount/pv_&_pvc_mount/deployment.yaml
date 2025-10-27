@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-app
+spec:
+  replicas: 1
+  selector:          # It tells which Pods belong to this deployment.
+    matchLabels:
+      app: file-app
+  template:          # It defines how those Pods should look.
+    metadata:
+      labels:
+        app: file-app
+    #  matchlabels and labels must be same
+
+    spec:
+      containers:
+        - name: file-container
+          image: busybox
+          command: ["sleep", "3600"]    # Keeps the container running for 3600 seconds (1 hour). Otherwise, it would exit immediately.
+          volumeMounts:                 # Mounts the volume inside the container.
+            - name: my-storage
+              mountPath: /data
+      volumes:                      # This section connects your container to the actual PVC.
+        - name: my-storage
+          persistentVolumeClaim:
+            claimName: my-pvc     # This must match the name of PVC (my-pvc).
+

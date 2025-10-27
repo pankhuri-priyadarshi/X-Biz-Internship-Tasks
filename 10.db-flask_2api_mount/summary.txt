@@ -1,0 +1,56 @@
+----------------- Local Database Connectivity ------------------------- 
+
+1.Description:In this version, the Flask APIs connect directly to a locally installed SQL Server (running on the host system).
+  The connection is established using the pyodbc library with local system parameters.
+
+2.Working Steps:The database (e.g., API_testing) is created manually in local SQL Server.
+   Query-> CREATE DATABASE API_testing ;
+          USE API_testing;
+          GO
+          CREATE TABLE api_logs (
+                SL_NO INT IDENTITY(1,1) PRIMARY KEY,
+                MS_NAME NVARCHAR(20),            
+                VALUE1 FLOAT,
+                VALUE2 FLOAT,
+                PERFORM NVARCHAR(10),           
+                API_REQUEST NVARCHAR(MAX),      
+                API_RESPONSE NVARCHAR(MAX),     
+                CREATED_DATE DATETIME2 DEFAULT SYSDATETIME()
+             );
+             
+          select * from api_logs;
+
+3.Connection string in db.py uses:
+   SERVER = r'DESKTOP-0CBMBC2\SQL2022EXPRESS'
+   DATABASE = 'API_testing'
+   UID = 'sa'
+   PWD = 'my_password'
+
+
+4.When API1 or API2 performs an operation, it calls the insert_log() function from db.py.
+5.This function inserts logs into the api_logs table in the local database.
+6.APIs run normally via python app.py, and data is stored locally.
+7.Key Point: Database and Flask app both run on the same machine; no Docker networking is involved.
+
+
+-------------- Docker Database Connectivity ------------------------
+
+1.Description:In this version, the Flask APIs (inside Docker containers) connect to a SQL Server container running in the same Docker network.
+              All services communicate internally through Docker Compose.
+
+2.Working Steps:
+  docker-compose.yml defines three services:
+  api1 → Main Flask API
+  api2 → Helper Flask API
+  mssql_db → SQL Server container
+
+3.Each API connects using:
+   SERVER = 'mssql_db'
+   DATABASE = 'API_testing'
+   UID = 'sa'
+   PWD = 'Pankhuri@2608X'
+
+4.Docker Compose automatically creates a bridge network so APIs can use service name (mssql_db) instead of localhost.
+5.After docker compose up, SQL Server starts, and APIs insert logs into the shared api_logs table.
+6.Postman requests on port 5001 trigger both APIs, and results are stored in the DB container.
+7.Key Point: Database runs inside a Docker container; communication between APIs and DB happens via internal Docker network.

@@ -1,0 +1,54 @@
+---------------------Persistent Volume (PV)------------------------
+
+1.PV stands for Persistent Volume.
+2.It represents actual physical storage (like a folder or disk on host system).
+3.It is created by admin or user to tell Kubernetes where storage is available.
+4.It can use local path (E:/FILES), NFS, or cloud storage.
+5.Data stored in PV remains safe even if Pod or container is deleted.
+6.Example: E:/FILES on your system can be used as a PV using hostPath.
+
+----------------Persistent Volume Claim (PVC)--------------------------
+
+1.PVC stands for Persistent Volume Claim.
+2.It is a request for storage made by a Pod from available PVs.
+3.It defines how much space and what type of access the Pod needs.
+4.Kubernetes automatically binds PVC to a suitable PV.
+5.Pods use PVCs to mount the storage path (like /data inside container).
+6.PVC connects your Pod → to PV → to actual system storage (E:/FILES).  
+
+7.In short:
+   PV = Where the storage is (actual space)
+   PVC = Who wants to use that storage (the claim)
+   Pod = Uses PVC to access the PV
+
+
+---------------- How to Run -------------------
+
+1. On terminal: minikube start
+                minikube status
+2. Create folder :C:\dummy\data
+3. On Command Prompt: minikube mount C:\dummy\data:/mnt/c/dummy/data  -> mount local stoarge with cluster(linux) storage
+4. Open new Command Prompt for verify: minikube ssh
+                                       ls /mnt/c/dummy/data
+                                       exit
+
+5. On terminal: 
+    kubectl apply -f pv.yaml
+    kubectl apply -f pvc.yaml
+    kubectl apply -f deployment.yaml
+
+6. Verify everything:
+   kubectl get pv              PV= Bound
+   kubectl get pvc             PVC = Bound
+   kubectl get pods            Pod = Running
+
+7. Deleting all file from folder CMD:
+   kubectl exec -it <pod-name> -- sh 
+     like -> kubectl exec -it file-app-5586555555-x6jzt -- sh
+
+   Inside container: cd /data
+                     ls
+                     rm -rf *
+                     exit
+
+   

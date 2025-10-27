@@ -1,0 +1,75 @@
+--------------------- About this project ---------------------------------
+
+1.Project Title: Two Flask APIs with Docker 
+
+2.Description:This project demonstrates inter-container communication using Docker and Flask.
+              It contains two APIs where API1 performs arithmetic operations and 
+              optionally communicates with API2 for combined results.
+
+3.Working Steps:
+    User sends a POST request to API1 (port 5001) with JSON data containing two numbers, an operator, and a merge flag.
+    API1 performs the requested arithmetic operation (+, -, *, /).
+    If "merge": true, API1 sends the same data internally to API2 using the Docker network (http://api2:5002/).
+    API2 calculates all four operations and returns them to API1.
+    API1 combines both results and returns a final JSON response to the user.
+
+4.Output Example: 
+  Input:
+       { "data1": 10, "data2": 5, "perform": "+", "merge": true }
+
+  Output:
+      {
+        "api1Result": 15,
+        "api2Result": { "+": 15, "-": 5, "*": 50, "/": 2 }
+      }
+
+5.Postman input->
+   Method: POST
+ i) URL: http://localhost:5001/
+    Body (JSON):
+   {
+     "data1": 10,
+     "data2": 5,
+     "perform": "+",       when merge is false on api1(port-5001)
+     "merge": false -->    response-> {
+    }                                    api1Result": 15 
+                                      }
+   ------------ OR -----------------
+    Body (JSON):
+   {
+     "data1": 10,
+     "data2": 5,
+     "perform": "+",       when merge is true on api1(port-5001)
+     "merge": true -->     response->   {
+    }                                     "api1Result": 15,
+                                          "api2Result": {
+                                                           "+": 15,
+                                                           "-": 5,
+                                                           "*": 50,
+                                                           "/": 2
+                                                       }
+                                        }
+
+ii) URL: http://localhost:5002/
+    
+    Body (JSON):
+   {
+     "data1": 10,
+     "data2": 5,
+     "perform": "+",       when merge is true OR false on api2(port-5002), it give same response.
+     "merge": true/false -->     response->   {
+    }                                  "+": 15,
+                                         "-": 5,
+                                         "*": 50,
+                                         "/": 2
+                                        }
+
+6.Key Points:
+   Two Flask applications run in separate Docker containers.
+   Communication occurs internally via Docker bridge network.
+   API1 handles main logic; API2 acts as a helper service.
+   No database connectivity is used in this version.
+
+7. Commands to run:
+    docker-compose up --build    : build and run container
+    docker-compose down          : remove that container

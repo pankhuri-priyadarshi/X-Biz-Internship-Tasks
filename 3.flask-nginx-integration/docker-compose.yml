@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  app1:
+    build: ./app1
+    container_name: flask_app1
+    env_file:
+      - ./config.env
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  app2:
+    build: ./app2
+    container_name: flask_app2
+    env_file:
+      - ./config.env
+    ports:
+      - "5001:5001"
+    depends_on:
+      - app1
+    restart: unless-stopped
+
+  nginx:
+    build: ./nginx
+    container_name: flask_nginx
+    env_file:
+      - ./config.env
+    ports:
+      - "${NGINX_PORT}:80"
+        # $ means- Exposing Nginx on port defined in config.env
+    depends_on:
+      - app1
+      - app2
+    restart: unless-stopped  
+    # 5 restart policies:
+      # 1.no → Never restart the container (default).
+      # 2.on-failure → Restart only if container exits with an error (non-zero code).
+      # 3.always → Always restart, even after manual stop or reboot.
+      # 4.unless-stopped → Restart on crash or reboot, but not if manually stopped.
+      # 5.unless-failure (old/deprecated) → Restart only if failed, but not on normal stop. (rarely used now)
+
+networks:
+  default:
+    name: flask_network

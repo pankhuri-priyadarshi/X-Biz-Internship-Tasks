@@ -1,0 +1,21 @@
+---------  Kubernetes Learning Summary - 07/08/2025--------
+
+
+1. Checked Kubernetes setup using kubectl get nodes and confirmed cluster is active (docker-desktop Ready).
+2. Learned about Kubernetes basics — Pod, Node, Cluster, Deployment, Service, and how they work together.
+3. Created first Pod using pod-test.yaml (nginx image) and verified with kubectl get pods.
+4. Learned meaning of kubectl commands like apply, get, describe, logs, and delete.
+5. Created Deployment (deployment.yaml) to run multiple Pods automatically and learned to scale replicas using kubectl scale.
+6. Created Service (service.yaml) with type: NodePort to expose Pods outside the cluster.
+7. Understood port, targetPort, and NodePort — internal vs external port difference.
+8. Opened app in browser using NodePort (e.g., http://localhost:31234).
+9. Learned different Service types: ClusterIP, NodePort, LoadBalancer, ExternalName.
+10. Practically saw Kubernetes auto-healing — when a Pod was deleted, a new one auto-created.
+11. Understood the real difference between Docker (manual) and Kubernetes (automatic management and scaling).
+
+
+
+
+
+
+

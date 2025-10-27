@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:                     # Defines how big the storage is.
+    storage: 1Gi                # storage size (1 GB)
+  accessModes:
+    - ReadWriteOnce             # only one pod can read/write at a time
+  persistentVolumeReclaimPolicy: Retain # keep data safe even if PV is released
+  storageClassName: manual
+  hostPath:
+    path: "/mnt/c/dummy/data"        # linux understand like this only, itnot get C:\dummy\data
+
+
+# This PV tells Kubernetes —
+# Use my local folder C:\dummy\data as a 1GB permanent storage that any Pod can access.
+
+# AccessModes:
+# ReadWriteOnce (RWO) → Only one Pod can read/write. Works with hostPath (local folder).
+# ReadOnlyMany (ROX) → Many Pods can read, none can write.
+# ReadWriteMany (RWX) → Many Pods can read & write at same time (needs network storage).
+
+# persistentVolumeReclaimPolicy:
+# It controls what happens to your files after PVC is gone:
+#    Retain → Data safe
+#    Delete → Data removed
+#    Recycle → Data wiped & reused (old method)-> Wipes (deletes) files inside PV and makes it Available again
+
+# storageClassName:
+# It works like a matching tag between PV and PVC.
+# If both have the same → they connect.
+# If different → they stay unbound.
+# If none given → it uses the default class (if cluster has one).
+# It's types :
+#    manual →     Static, user-created, local storage (e.g., C:/dummy/data).
+#                 Used in: Docker, Minikube / local setup.
+#    standard →   Dynamic, auto-created by Kubernetes, normal disk.
+#                Used in: Cloud clusters (AWS, GCP, Azure).
+#    fast →      Dynamic, SSD or high-speed disk, admin-created.
+#                Used in: Databases / high-performance apps.

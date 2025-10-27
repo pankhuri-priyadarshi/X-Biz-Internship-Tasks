@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:   # Defines how much storage is being requested.
+    requests:
+      storage: 1Gi
+  storageClassName: manual  # This must match the storageClassName of the PV.
+                            # Here both are "manual", so Kubernetes can bind them together.
+
+# In short: "Hey Kubernetes, give me 1GB of space (ReadWriteOnce) from any PV that has storageClassName: manual.”
