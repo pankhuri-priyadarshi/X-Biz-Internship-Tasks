@@ -1,0 +1,9 @@
+---
+THREAD: "1"
+INPUT_JSON_PATH: "INPUT_JSON"
+OUTPUT_JSON_PATH: "OUTPUT_JSON"
+SOURCE: "C:/Users/Pankhuri Priyadarshi/Downloads/OCR_XBIZ/INPUT_new/"
+PATH:   "C:/Users/Pankhuri Priyadarshi/Downloads/OCR_XBIZ/INPUT_new/"
+GPU: "FALSE"
+SKIP_COUNT: 3
+

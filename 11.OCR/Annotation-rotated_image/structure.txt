@@ -1,0 +1,12 @@
+main loop
+ └── detect_ocr_main_process()
+      └── detect_text()
+           ├── open_and_get_response()
+           │     └── PaddleOCR (ocr.ocr)
+           ├── generate_ocr_image_visual()
+           └── helper functions:
+                 ├── filter_raw()
+                 ├── filter_raw_v2()
+                 ├── update_height()
+                 ├── update_vertices()
+      └── update_sorted()

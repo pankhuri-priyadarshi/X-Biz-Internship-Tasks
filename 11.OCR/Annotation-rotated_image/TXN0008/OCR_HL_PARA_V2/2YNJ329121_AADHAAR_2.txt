@@ -1,0 +1,200 @@
+[
+    {
+        "TEXT": "Unigue Identfication Autnoriry or india",
+        "VERTICES": {
+            "x": 1785,
+            "x1": 2742,
+            "y": 136,
+            "y1": 204
+        }
+    },
+    {
+        "TEXT": "3301989911",
+        "VERTICES": {
+            "x": 510,
+            "x1": 543,
+            "y": 170,
+            "y1": 293
+        }
+    },
+    {
+        "TEXT": "Ca",
+        "VERTICES": {
+            "x": 333,
+            "x1": 493,
+            "y": 174,
+            "y1": 300
+        }
+    },
+    {
+        "TEXT": "v022",
+        "VERTICES": {
+            "x": 1509,
+            "x1": 2346,
+            "y": 269,
+            "y1": 341
+        }
+    },
+    {
+        "TEXT": "u.560079",
+        "VERTICES": {
+            "x": 1502,
+            "x1": 1863,
+            "y": 459,
+            "y1": 528
+        }
+    },
+    {
+        "TEXT": "AddressC/O:Kotrappa H.C/202 2nd Floor",
+        "VERTICES": {
+            "x": 1502,
+            "x1": 2382,
+            "y": 514,
+            "y1": 586
+        }
+    },
+    {
+        "TEXT": "Soundarya Kamakshi C Block",
+        "VERTICES": {
+            "x": 1495,
+            "x1": 2119,
+            "y": 582,
+            "y1": 651
+        }
+    },
+    {
+        "TEXT": "Kamakshipalya,Bangalore North,Bengaluru",
+        "VERTICES": {
+            "x": 1492,
+            "x1": 2409,
+            "y": 640,
+            "y1": 712
+        }
+    },
+    {
+        "TEXT": "Karmataka,560079",
+        "VERTICES": {
+            "x": 1489,
+            "x1": 1893,
+            "y": 708,
+            "y1": 777
+        }
+    },
+    {
+        "TEXT": "Aadhaar is a proof of identity, not of citizenship.",
+        "VERTICES": {
+            "x": 839,
+            "x1": 893,
+            "y": 449,
+            "y1": 1188
+        }
+    },
+    {
+        "TEXT": "/DOB24/04/1974",
+        "VERTICES": {
+            "x": 483,
+            "x1": 567,
+            "y": 490,
+            "y1": 1195
+        }
+    },
+    {
+        "TEXT": "4330 1989 9117",
+        "VERTICES": {
+            "x": 906,
+            "x1": 1003,
+            "y": 548,
+            "y1": 1226
+        }
+    },
+    {
+        "TEXT": "9117",
+        "VERTICES": {
+            "x": 2389,
+            "x1": 2612,
+            "y": 889,
+            "y1": 977
+        }
+    },
+    {
+        "TEXT": "Kotrabasappa H",
+        "VERTICES": {
+            "x": 419,
+            "x1": 487,
+            "y": 823,
+            "y1": 1185
+        }
+    },
+    {
+        "TEXT": "HPI",
+        "VERTICES": {
+            "x": 150,
+            "x1": 197,
+            "y": 844,
+            "y1": 1195
+        }
+    },
+    {
+        "TEXT": "Government of India",
+        "VERTICES": {
+            "x": 213,
+            "x1": 270,
+            "y": 763,
+            "y1": 1280
+        }
+    },
+    {
+        "TEXT": "/Male",
+        "VERTICES": {
+            "x": 559,
+            "x1": 623,
+            "y": 895,
+            "y1": 1195
+        }
+    },
+    {
+        "TEXT": "www.uidai.gov.in",
+        "VERTICES": {
+            "x": 2628,
+            "x1": 3048,
+            "y": 1028,
+            "y1": 1096
+        }
+    },
+    {
+        "TEXT": "1947",
+        "VERTICES": {
+            "x": 1606,
+            "x1": 1729,
+            "y": 1032,
+            "y1": 1096
+        }
+    },
+    {
+        "TEXT": "holp@utdai.gov.in",
+        "VERTICES": {
+            "x": 1892,
+            "x1": 2428,
+            "y": 1028,
+            "y1": 1100
+        }
+    },
+    {
+        "TEXT": "01",
+        "VERTICES": {
+            "x": 135,
+            "x1": 318,
+            "y": 1537,
+            "y1": 1653
+        }
+    },
+    {
+        "TEXT": "Issue Date:04/07/2013",
+        "VERTICES": {
+            "x": 446,
+            "x1": 816,
+            "y": 1647,
+            "y1": 1702
+        }
+    }
+]

@@ -1,0 +1,191 @@
+[
+    {
+        "TEXT": "9HT",
+        "VERTICES": {
+            "x": 1186,
+            "x1": 1234,
+            "y": 569,
+            "y1": 604
+        }
+    },
+    {
+        "TEXT": "TRR",
+        "VERTICES": {
+            "x": 1260,
+            "x1": 1403,
+            "y": 565,
+            "y1": 615
+        }
+    },
+    {
+        "TEXT": "GOVERI",
+        "VERTICES": {
+            "x": 1123,
+            "x1": 1238,
+            "y": 598,
+            "y1": 648
+        }
+    },
+    {
+        "TEXT": "Rahul Rajiv Se",
+        "VERTICES": {
+            "x": 1038,
+            "x1": 1237,
+            "y": 697,
+            "y1": 750
+        }
+    },
+    {
+        "TEXT": "gal",
+        "VERTICES": {
+            "x": 1247,
+            "x1": 1286,
+            "y": 713,
+            "y1": 745
+        }
+    },
+    {
+        "TEXT": "f Birth : 1992",
+        "VERTICES": {
+            "x": 1240,
+            "x1": 1403,
+            "y": 752,
+            "y1": 801
+        }
+    },
+    {
+        "TEXT": "q/Male",
+        "VERTICES": {
+            "x": 1035,
+            "x1": 1188,
+            "y": 789,
+            "y1": 838
+        }
+    },
+    {
+        "TEXT": "8758 873",
+        "VERTICES": {
+            "x": 1031,
+            "x1": 1237,
+            "y": 971,
+            "y1": 1039
+        }
+    },
+    {
+        "TEXT": "1 3778",
+        "VERTICES": {
+            "x": 1240,
+            "x1": 1385,
+            "y": 975,
+            "y1": 1039
+        }
+    },
+    {
+        "TEXT": "hlhIR",
+        "VERTICES": {
+            "x": 1050,
+            "x1": 1236,
+            "y": 1085,
+            "y1": 1125
+        }
+    },
+    {
+        "TEXT": "TURHTaT3TER",
+        "VERTICES": {
+            "x": 1240,
+            "x1": 1586,
+            "y": 1081,
+            "y1": 1140
+        }
+    },
+    {
+        "TEXT": "oTTaTqqef rgur:aTfSrcT9T erqT&c",
+        "VERTICES": {
+            "x": 1254,
+            "x1": 1307,
+            "y": 1527,
+            "y1": 1926
+        }
+    },
+    {
+        "TEXT": "T S/O:Tof,-2rte Address:S/ORajiv Sehgal,",
+        "VERTICES": {
+            "x": 1332,
+            "x1": 1377,
+            "y": 1527,
+            "y1": 2306
+        }
+    },
+    {
+        "TEXT": "www.",
+        "VERTICES": {
+            "x": 948,
+            "x1": 976,
+            "y": 1962,
+            "y1": 2021
+        }
+    },
+    {
+        "TEXT": "UNIQUE IDENTIFICATION AUTHORITY OFINDIA",
+        "VERTICES": {
+            "x": 1402,
+            "x1": 1448,
+            "y": 1714,
+            "y1": 2342
+        }
+    },
+    {
+        "TEXT": "[www",
+        "VERTICES": {
+            "x": 979,
+            "x1": 1018,
+            "y": 1992,
+            "y1": 2090
+        }
+    },
+    {
+        "TEXT": "abhilasha Apartment,",
+        "VERTICES": {
+            "x": 1184,
+            "x1": 1233,
+            "y": 1959,
+            "y1": 2218
+        }
+    },
+    {
+        "TEXT": "Vasai, District: Thane, P.O:",
+        "VERTICES": {
+            "x": 1074,
+            "x1": 1120,
+            "y": 1955,
+            "y1": 2295
+        }
+    },
+    {
+        "TEXT": "Apartment, Street/Road/Lane: 60",
+        "VERTICES": {
+            "x": 1250,
+            "x1": 1304,
+            "y": 1940,
+            "y1": 2365
+        }
+    },
+    {
+        "TEXT": "widagovin0.Box No.7",
+        "VERTICES": {
+            "x": 919,
+            "x1": 983,
+            "y": 2013,
+            "y1": 2339
+        }
+    },
+    {
+        "TEXT": "401202",
+        "VERTICES": {
+            "x": 999,
+            "x1": 1051,
+            "y": 2220,
+            "y1": 2340
+        }
+    }
+]

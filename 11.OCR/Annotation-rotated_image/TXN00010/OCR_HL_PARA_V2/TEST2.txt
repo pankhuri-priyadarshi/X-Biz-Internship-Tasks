@@ -1,0 +1,272 @@
+[
+    {
+        "TEXT": "UP",
+        "VERTICES": {
+            "x": 1707,
+            "x1": 1736,
+            "y": 982,
+            "y1": 1005
+        }
+    },
+    {
+        "TEXT": "IQUEIDENTIFICATION AUTHORITY OFINDIA",
+        "VERTICES": {
+            "x": 1759,
+            "x1": 2336,
+            "y": 1036,
+            "y1": 1070
+        }
+    },
+    {
+        "TEXT": "qT S/O:",
+        "VERTICES": {
+            "x": 1510,
+            "x1": 1747,
+            "y": 1043,
+            "y1": 1096
+        }
+    },
+    {
+        "TEXT": "60",
+        "VERTICES": {
+            "x": 1516,
+            "x1": 1747,
+            "y": 1082,
+            "y1": 1135
+        }
+    },
+    {
+        "TEXT": "-2T AddressS/ORajivSehgal,",
+        "VERTICES": {
+            "x": 1754,
+            "x1": 2294,
+            "y": 1103,
+            "y1": 1142
+        }
+    },
+    {
+        "TEXT": "House/Bldg./Apt.:E-2apeksha",
+        "VERTICES": {
+            "x": 1952,
+            "x1": 2331,
+            "y": 1144,
+            "y1": 1178
+        }
+    },
+    {
+        "TEXT": "Apartment,Street/Road/Lane:60",
+        "VERTICES": {
+            "x": 1952,
+            "x1": 2360,
+            "y": 1181,
+            "y1": 1214
+        }
+    },
+    {
+        "TEXT": "GOVERNMENT OF INDIA",
+        "VERTICES": {
+            "x": 597,
+            "x1": 645,
+            "y": 1041,
+            "y1": 1372
+        }
+    },
+    {
+        "TEXT": "feet road, Landmark:opp",
+        "VERTICES": {
+            "x": 1950,
+            "x1": 2263,
+            "y": 1219,
+            "y1": 1253
+        }
+    },
+    {
+        "TEXT": "8758 8731 3778",
+        "VERTICES": {
+            "x": 976,
+            "x1": 1042,
+            "y": 1082,
+            "y1": 1440
+        }
+    },
+    {
+        "TEXT": "q/Year of Birth:1992",
+        "VERTICES": {
+            "x": 749,
+            "x1": 807,
+            "y": 1079,
+            "y1": 1445
+        }
+    },
+    {
+        "TEXT": "abhilasha Apartment,",
+        "VERTICES": {
+            "x": 1955,
+            "x1": 2219,
+            "y": 1250,
+            "y1": 1289
+        }
+    },
+    {
+        "TEXT": "SLLURH",
+        "VERTICES": {
+            "x": 1754,
+            "x1": 1919,
+            "y": 1281,
+            "y1": 1323
+        }
+    },
+    {
+        "TEXT": "g",
+        "VERTICES": {
+            "x": 1523,
+            "x1": 1752,
+            "y": 1262,
+            "y1": 1318
+        }
+    },
+    {
+        "TEXT": "ArealLocality/Sector: sai nagar",
+        "VERTICES": {
+            "x": 1952,
+            "x1": 2334,
+            "y": 1289,
+            "y1": 1325
+        }
+    },
+    {
+        "TEXT": "Rahul Rajiv Sehgal",
+        "VERTICES": {
+            "x": 710,
+            "x1": 755,
+            "y": 1190,
+            "y1": 1445
+        }
+    },
+    {
+        "TEXT": "13401202",
+        "VERTICES": {
+            "x": 1754,
+            "x1": 1890,
+            "y": 1320,
+            "y1": 1362
+        }
+    },
+    {
+        "TEXT": "vasai west,Village/Town/City",
+        "VERTICES": {
+            "x": 1955,
+            "x1": 2320,
+            "y": 1325,
+            "y1": 1362
+        }
+    },
+    {
+        "TEXT": "a/Male",
+        "VERTICES": {
+            "x": 801,
+            "x1": 844,
+            "y": 1289,
+            "y1": 1439
+        }
+    },
+    {
+        "TEXT": "Vasai, District:Thane,P.O.",
+        "VERTICES": {
+            "x": 1958,
+            "x1": 2300,
+            "y": 1364,
+            "y1": 1398
+        }
+    },
+    {
+        "TEXT": "Bassein Road, State:",
+        "VERTICES": {
+            "x": 1955,
+            "x1": 2219,
+            "y": 1400,
+            "y1": 1434
+        }
+    },
+    {
+        "TEXT": "10120",
+        "VERTICES": {
+            "x": 2250,
+            "x1": 2320,
+            "y": 1442,
+            "y1": 1460
+        }
+    },
+    {
+        "TEXT": "Maharashtra, PinCode",
+        "VERTICES": {
+            "x": 1960,
+            "x1": 2229,
+            "y": 1439,
+            "y1": 1465
+        }
+    },
+    {
+        "TEXT": "1947",
+        "VERTICES": {
+            "x": 1623,
+            "x1": 1676,
+            "y": 1454,
+            "y1": 1483
+        }
+    },
+    {
+        "TEXT": "www",
+        "VERTICES": {
+            "x": 2001,
+            "x1": 2084,
+            "y": 1464,
+            "y1": 1502
+        }
+    },
+    {
+        "TEXT": "1800 180 1947",
+        "VERTICES": {
+            "x": 1584,
+            "x1": 1723,
+            "y": 1467,
+            "y1": 1509
+        }
+    },
+    {
+        "TEXT": "help@uidai.gov.in",
+        "VERTICES": {
+            "x": 1754,
+            "x1": 1927,
+            "y": 1503,
+            "y1": 1537
+        }
+    },
+    {
+        "TEXT": "P.O.Box No.1947",
+        "VERTICES": {
+            "x": 2166,
+            "x1": 2328,
+            "y": 1503,
+            "y1": 1535
+        }
+    },
+    {
+        "TEXT": "www.uidai.gov.in",
+        "VERTICES": {
+            "x": 1965,
+            "x1": 2125,
+            "y": 1509,
+            "y1": 1534
+        }
+    },
+    {
+        "TEXT": "Bengaluru-560 001",
+        "VERTICES": {
+            "x": 2166,
+            "x1": 2334,
+            "y": 1524,
+            "y1": 1555
+        }
+    }
+]

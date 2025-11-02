@@ -1,0 +1,79 @@
+----------------------- OCR Automation Script ---------------------------
+
+** Purpose:Automates full OCR (Optical Character Recognition) on image files (like Aadhaar cards), 
+           processes them, cleans text, annotates detections, and saves structured outputs
+           (text + JSON + Excel).
+
+1.Imports & Setup--
+    Imports libraries for OCR (PaddleOCR), image processing (cv2, PIL), file handling (os, shutil, tempfile), and utilities (re, json, math, etc.).
+    Initializes global paths and configuration variables (input/output folders, GPU flag, etc.).
+
+2.Helper Functions--
+  myFunc(e) → Sorts OCR text blocks based on vertical position.
+  filter_raw() / filter_raw_v2() → Removes unwanted symbols & empty text lines.
+  update_height() → Filters out extremely small text boxes for better accuracy.
+  update_vertices() → Calculates rectangular coordinates (x, y, x1, y1) for each detected text box.
+  update_sorted() → Sorts and groups detected words into readable order (top-to-bottom, left-to-right).
+  
+3.Image Preprocessing & Deskew- deskew_image() → Automatically corrects tilted or rotated images to improve OCR accuracy.
+
+4.Mapping Functions- map_point_from_rotated_to_original() → Converts detected coordinates from rotated images back to the original coordinate system.
+
+5.OCR Execution-
+  run_paddle_and_map()
+  Reads the image and applies rotation or deskew if needed.
+  Enhances the image using grayscale, CLAHE, and filtering.
+  Runs OCR using PaddleOCR and maps detected words with bounding boxes and confidence values.
+
+6.Annotation Generation-
+  generate_ocr_image_visual()
+  Draws green boxes and red labels for detected text.
+  Saves an annotated image under the OCR_IMAGE folder for visual verification.
+
+7.Text Detection Core-
+  detect_text()
+  Handles single or double-sided Aadhaar images (splits vertically if needed).
+  Tries multiple rotations (0°, 90°, 270°) to find the best OCR result.
+  Merges text detections, filters raw text, sorts, and saves multiple formatted versions (raw, line-wise, paragraph-wise).
+  Saves JSON highlights + annotated images.
+
+8.Main OCR Processing-
+  detect_ocr_main_process()
+  Creates organized folders for results (OCR, HL_LINE, SORTED, etc.).
+  Processes each image: runs OCR, saves results in text, JSON, and Excel.
+  Calls update_sorted() to save line-by-line sorted text into .txt and .xlsx formats.
+
+9.Configuration Loader- init_yaml() → Reads settings from xbiz_ocr_config.yaml (paths, source folder, GPU flag).
+
+10.Continuous Watcher Loop- Continuously monitors the input folder (INPUT_JSON_PATH_thread).
+                           When a JSON file is found:
+                           Reads file info.
+                           Runs full OCR process.
+                           Saves success output JSON with detected results.
+                           Deletes processed input file.
+                           Waits briefly (0.2 sec) if no files found.
+
+11.Output Generated
+   For each image, the script produces:
+   OCR/ → Plain extracted text
+   OCR_HL_LINE/ → Line-wise JSON data
+   OCR_HL_PARA/ → Paragraph-wise JSON data
+   OCR_SORTED/, OCR_SORTED_V2/, OCR_SORTED_V3/ → Sorted text and Excel file
+   OCR_IMAGE/ → Annotated image with highlighted boxes
+
+12.Output JSON with OCR result summary- 
+   Automates complete OCR workflow: from reading images → preprocessing → running PaddleOCR → 
+   cleaning → mapping → visualization → saving structured results — all handled automatically
+    through a continuous background watcher.
+
+--------------- How it Runs -------------
+
+1.Run- python ocr_orchestrator.py 
+2.Main logic is inside: thread.py 
+3.Make empty folder like INPUT_JSON, INPUT_JSON_1, INPUT_JSON_2
+4.Add data.json in INPUT_JSON before running 1. as it automatically delete from this folder after preprocessing.
+5.Make sure to save data.json somewhere else, as it deleted automatically from INPUT_JSON.
+6.Change in data.json for txn_id or different sample of images.
+7.All sample images must inside DATA/PREPROCESSING.
+8.Give source and path where you want to store resultant folders in xbiz_ocr_config.yaml file like INPUT_new.
+
