@@ -1,0 +1,37 @@
+------------------ Task 1: File Upload and Local Storage (upload.py)-----------------------
+
+1.Objective:To receive a file through an API request and store it in a designated local directory.
+
+2.Process Steps:
+   The file is received using a POST request in Postman (form-data, key: file).
+   The API checks whether the file is provided and has a valid filename.
+   The application ensures that the directory Uploads/ exists.
+   If not present, it is created using os.makedirs().
+   The uploaded file is saved to the Uploads directory using file.save().
+
+3.Outcome:The file is successfully stored in the local folder with its original filename.
+
+
+
+------------------- Task 2: Storing File Metadata into the Database (upload-db.py)-----------------
+
+
+1.Objective:To record details of each uploaded file into the SQL Server database and given directory too as above.
+
+2.Metadata Stored: Filename, File Size (in bytes), File Extension
+  CREATE TABLE upload (
+     SlNo INT IDENTITY(1,1) PRIMARY KEY,
+     filename VARCHAR(255),
+     filesize BIGINT,
+     file_extension VARCHAR(50)
+   );
+
+3.Process Steps:
+   Extract filename using file.filename.
+   Determine file extension by splitting on the last period.
+   Calculate file size using file.seek() and file.tell().
+   Establish a database connection using pyodbc.
+   Execute an SQL INSERT query: INSERT INTO upload (filename, filesize, file_extension) VALUES (?, ?, ?)
+   The table has an auto-increment primary key, so only metadata fields are inserted (no manual ID handling).
+
+4.Outcome: A new record is created in the upload table for every uploaded file and it is saved in given directory too.
